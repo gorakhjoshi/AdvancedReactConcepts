@@ -1,9 +1,9 @@
-import State from './1-useState/1-useState-Basic'
+import ArrayState from './1-useState/2-useState-Array'
 
 function App() {
   return (
     <div className='container'>
-      <State />
+      <ArrayState />
     </div>
   )
 }
