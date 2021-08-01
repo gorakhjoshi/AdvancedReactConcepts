@@ -1,9 +1,9 @@
-import ArrayState from './1-useState/2-useState-Array'
+import ObjectState from './1-useState/3-useState-Object'
 
 function App() {
   return (
     <div className='container'>
-      <ArrayState />
+      <ObjectState />
     </div>
   )
 }
