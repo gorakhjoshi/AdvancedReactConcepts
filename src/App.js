@@ -1,9 +1,9 @@
-import UseStateCounter from './1-useState/4-useState-Function'
+import UseEffectBasics from './2-useEffect/1-useEffect-basics'
 
 function App() {
   return (
     <div className='container'>
-      <UseStateCounter />
+      <UseEffectBasics />
     </div>
   )
 }
