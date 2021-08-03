@@ -7,7 +7,11 @@ const UseEffectBasics = () => {
 
   useEffect(() => {
     console.log('Inside useEffect')
+    if (value >= 1) {
+      document.title = `New Message (${value})`
+    }
   })
+
   console.log('Outside useEffect')
   return (
     <>
