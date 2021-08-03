@@ -3,22 +3,28 @@ import React, { useState, useEffect } from 'react'
 // second parameter
 // cleanup function
 const UseEffectBasics = () => {
-  const [value, setValue] = useState(0)
+  const [size, setSize] = useState(window.innerWidth)
+  console.log(size)
+
+  const checkSize = () => {
+    setSize(window.innerWidth)
+  }
 
   useEffect(() => {
-    console.log('Inside useEffect')
-    if (value >= 1) {
-      document.title = `New Message (${value})`
-    }
-  }, [value])
+    console.log('useEffect Running running')
 
-  console.log('Outside useEffect')
+    window.addEventListener('resize', checkSize)
+
+    return () => {
+      console.log('Cleanup function running')
+      window.removeEventListener('resize', checkSize)
+    }
+  })
+
   return (
     <>
-      <h1>{value}</h1>
-      <button className='btn' onClick={() => setValue(value + 1)}>
-        Click Me
-      </button>
+      <h1>Window</h1>
+      <h2>{size}px</h2>
     </>
   )
 }
