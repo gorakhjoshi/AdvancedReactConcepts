@@ -1,30 +1,38 @@
 import React, { useState, useEffect } from 'react'
-// by default runs after every re-render
-// second parameter
-// cleanup function
-const UseEffectBasics = () => {
-  const [size, setSize] = useState(window.innerWidth)
-  console.log(size)
 
-  const checkSize = () => {
-    setSize(window.innerWidth)
+const UseEffectBasics = () => {
+  const url = 'https://api.github.com/users'
+
+  const [users, setUsers] = useState([])
+
+  const getUsers = async () => {
+    const response = await fetch(url)
+    const users = await response.json()
+    console.log(users)
+    setUsers(users)
   }
 
   useEffect(() => {
-    console.log('useEffect Running running')
-
-    window.addEventListener('resize', checkSize)
-
-    return () => {
-      console.log('Cleanup function running')
-      window.removeEventListener('resize', checkSize)
-    }
-  })
+    getUsers()
+  }, [])
 
   return (
     <>
-      <h1>Window</h1>
-      <h2>{size}px</h2>
+      <h3>Github Users</h3>
+      <ul className='users'>
+        {users.map((user) => {
+          const { id, login, html_url, avatar_url } = user
+          return (
+            <li key={id}>
+              <img src={avatar_url} alt={login} />
+              <div>
+                <h4>{login}</h4>
+                <a href={html_url}>Github Profile</a>
+              </div>
+            </li>
+          )
+        })}
+      </ul>
     </>
   )
 }
