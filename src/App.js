@@ -1,9 +1,9 @@
-import UseEffectBasics from './2-useEffect/1-useEffect-basics'
+import MultipleReturns from './3-multiple-returns/multiple-returns'
 
 function App() {
   return (
     <div className='container'>
-      <UseEffectBasics />
+      <MultipleReturns />
     </div>
   )
 }
