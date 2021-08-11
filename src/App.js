@@ -1,11 +1,11 @@
-import UseRefHook from './5-useReducer-Hook'
+import PropDrilling from './6-prop-drilling/prop-drilling';
 
 function App() {
   return (
     <div className='container'>
-      <UseRefHook />
+      <PropDrilling />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
