@@ -1,43 +1,63 @@
-import React, { useState, useReducer } from 'react'
-import Modal from './Modal'
-import { data } from '../data'
+import React, { useState, useReducer } from 'react';
+import Modal from './Modal';
+import { data } from '../data';
 
 const initialState = {
-    people: data,
-    isModalOpen: false,
-    modalContent: 'Hello'
-}
+  people: [],
+  isModalOpen: false,
+  modalContent: 'Hello',
+};
 
 const reducer = (state, action) => {
-    if(action.type === 'ADD_ITEM') {
-      const newPeople = [...state.people, action.payload]
-        return {...state, people: newPeople, isModalOpen: true, modalContent: 'Item Added'}
-    }
+  if (action.type === 'ADD_ITEM') {
+    const newPeople = [...state.people, action.payload];
+    return {
+      ...state,
+      people: newPeople,
+      isModalOpen: true,
+      modalContent: 'Item Added',
+    };
+  }
+  if (action.type === 'REMOVE') {
+  }
+  if (action.type === 'CLOSE_MODAL') {
+    return { ...state, ismodalOpen: false };
+  }
+  if (action.type === 'NO_VALUE') {
+    return {
+      ...state,
+      isModalOpen: true,
+      modalContent: 'Please enter valid input',
+    };
+  }
 
-}
+  throw new Error('No any matching dispatch found');
+};
 const Index = () => {
-  const [name, setName] = useState('')
+  const [name, setName] = useState('');
 
-
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (name) {
-      const newItem = {id: new Date().getTime().toString(), name}
-      dispatch({type: 'ADD_ITEM', payload: newItem })
+      const newItem = { id: new Date().getTime().toString(), name };
+      dispatch({ type: 'ADD_ITEM', payload: newItem });
+      setName('');
     } else {
-      dispatch({type: 'NO_VALUE'})
+      dispatch({ type: 'NO_VALUE' });
     }
-  }
+  };
 
   const closeModal = () => {
-    dispatch({type: 'CLOSE_MODAL'})
-  }
+    dispatch({ type: 'CLOSE_MODAL' });
+  };
 
   return (
     <>
-      {state.isModalOpen && <Modal modalContent = {state.modalContent} closeModal = {closeModal} />}
+      {state.isModalOpen && (
+        <Modal modalContent={state.modalContent} closeModal={closeModal} />
+      )}
 
       <form onSubmit={handleSubmit} className='form'>
         <div>
@@ -45,7 +65,7 @@ const Index = () => {
             type='text'
             value={name}
             onChange={(e) => {
-              setName(e.target.value)
+              setName(e.target.value);
             }}
           />
         </div>
@@ -53,14 +73,18 @@ const Index = () => {
       </form>
       {state.people.map((person) => {
         return (
-          <div key={person.id} className = "item">
+          <div key={person.id} className='item'>
             <h4>{person.name}</h4>
-            <button>REMOVE</button>
+            <button
+              onClick={() => dispatch({ type: 'REMOVE', payload: person.id })}
+            >
+              REMOVE
+            </button>
           </div>
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;

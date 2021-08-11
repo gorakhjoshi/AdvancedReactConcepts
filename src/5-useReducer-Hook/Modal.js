@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 
-const Modal = ({modalContent, closeModal}) => {
-    return (
-        <div className = 'modal'>
-            <p>{modalContent}</p>
-        </div>
-    )
-}
+const Modal = ({ modalContent, closeModal }) => {
+  // useEffect(() => {
+  //   closeModal();
+  // }, []);
 
-export default Modal
+  return (
+    <div className='modal'>
+      <p>{modalContent}</p>
+    </div>
+  );
+};
+
+export default Modal;
