@@ -2,37 +2,14 @@ import React, { useState, useReducer } from 'react';
 import Modal from './Modal';
 import { data } from '../data';
 
+import { reducer } from './reducer';
+
 const initialState = {
-  people: [],
+  people: data,
   isModalOpen: false,
   modalContent: 'Hello',
 };
 
-const reducer = (state, action) => {
-  if (action.type === 'ADD_ITEM') {
-    const newPeople = [...state.people, action.payload];
-    return {
-      ...state,
-      people: newPeople,
-      isModalOpen: true,
-      modalContent: 'Item Added',
-    };
-  }
-  if (action.type === 'REMOVE') {
-  }
-  if (action.type === 'CLOSE_MODAL') {
-    return { ...state, ismodalOpen: false };
-  }
-  if (action.type === 'NO_VALUE') {
-    return {
-      ...state,
-      isModalOpen: true,
-      modalContent: 'Please enter valid input',
-    };
-  }
-
-  throw new Error('No any matching dispatch found');
-};
 const Index = () => {
   const [name, setName] = useState('');
 

@@ -1,9 +1,9 @@
-import PropDrilling from './6-prop-drilling/prop-drilling';
+import UseReducer from './5-useReducer-Hook';
 
 function App() {
   return (
     <div className='container'>
-      <PropDrilling />
+      <UseReducer />
     </div>
   );
 }
