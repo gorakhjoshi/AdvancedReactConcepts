@@ -1,9 +1,9 @@
-import ContextAPI from './7-contextAPI/1-context-api';
+import Example from './8-custom-hook/1-fetch-example';
 
 function App() {
   return (
     <div className='container'>
-      <ContextAPI />
+      <Example />
     </div>
   );
 }
