@@ -1,23 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useFetch } from './2-useFetch.js';
 
 const url = 'https://reactcourseapi.gorakhjoshi.com/';
 
 const Example = () => {
-  const [loading, setLoading] = useState(true);
-  const [products, setProduct] = useState([]);
-
-  const getProducts = async () => {
-    const response = await fetch(url);
-    const products = await response.json();
-    console.log(products);
-    setProduct(products);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
+  const { loading, products } = useFetch(url);
+  console.log(products);
   return (
     <div>
       <h2>{loading ? 'loading' : 'product'}</h2>

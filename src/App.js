@@ -1,9 +1,9 @@
-import Example from './8-custom-hook/1-fetch-example';
+import Index from './9-prop-types/index';
 
 function App() {
   return (
     <div className='container'>
-      <Example />
+      <Index />
     </div>
   );
 }
