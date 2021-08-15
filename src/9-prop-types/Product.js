@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import defaultImage from '../assets/defaultImage.png';
 
 const Product = ({ image, name, price }) => {

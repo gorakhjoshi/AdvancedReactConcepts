@@ -4,15 +4,13 @@ export const useFetch = (url) => {
   const [loading, setLoading] = useState(true);
   const [products, setProduct] = useState([]);
 
-  const getProducts = async () => {
-    const response = await fetch(url);
-    const products = await response.json();
-    console.log(products);
-    setProduct(products);
-    setLoading(false);
-  };
-
   useEffect(() => {
+    const getProducts = async () => {
+      const response = await fetch(url);
+      const products = await response.json();
+      setProduct(products);
+      setLoading(false);
+    };
     getProducts();
   }, [url]);
 

@@ -4,7 +4,6 @@ const url = 'https://reactcourseapi.gorakhjoshi.com/';
 
 const Index = () => {
   const { products } = useFetch(url);
-  console.log(products);
 
   return (
     <>
