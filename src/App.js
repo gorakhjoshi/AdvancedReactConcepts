@@ -1,9 +1,9 @@
-import Index from './9-prop-types/index';
+import ReactRouter from './10-react-router';
 
 function App() {
   return (
     <div className='container'>
-      <Index />
+      <ReactRouter />
     </div>
   );
 }
