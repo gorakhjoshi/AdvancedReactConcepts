@@ -12,6 +12,7 @@ import Navbar from './Navbar';
 const ReactRouter = () => {
   return (
     <Router>
+      <Navbar />
       <Switch>
         <Route exact path='/'>
           <Home />
@@ -20,6 +21,9 @@ const ReactRouter = () => {
           <About />
         </Route>
         <Route path='/people'>
+          <People />
+        </Route>
+        <Route path='/person/:id' children={<Person />}>
           <People />
         </Route>
         <Route path='/*'>
