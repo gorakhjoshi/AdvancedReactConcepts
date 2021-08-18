@@ -5,7 +5,9 @@ const Error = () => {
   return (
     <>
       <h1>Nothing Found</h1>
-      <Link to='/'>Back to Home</Link>
+      <Link to='/' className='btn'>
+        Back to Home
+      </Link>
     </>
   );
 };

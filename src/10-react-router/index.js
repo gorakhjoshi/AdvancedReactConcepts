@@ -23,9 +23,7 @@ const ReactRouter = () => {
         <Route path='/people'>
           <People />
         </Route>
-        <Route path='/person/:id' children={<Person />}>
-          <People />
-        </Route>
+        <Route path='/person/:id' children={<Person />}></Route>
         <Route path='/*'>
           <Error />
         </Route>
