@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFetch } from '../8-custom-hook/2-useFetch';
 
 const url = 'https://reactcourseapi.gorakhjoshi.com/';
 
 const Index = () => {
   const { products } = useFetch(url);
-  console.log(products);
+  const [count, setCount] = useState(0);
+  console.log('Index Component is Running');
   return (
     <>
+      <h1>Count: {count}</h1>
+      <button className='btn' onClick={() => setCount(count + 1)}>
+        Counter
+      </button>
       <BigList products={products} />
     </>
   );
 };
 
-const BigList = ({ products }) => {
+const BigList = React.memo(({ products }) => {
+  console.log('Big List is Running');
   return (
     <>
       {products.map((product) => {
@@ -21,9 +27,11 @@ const BigList = ({ products }) => {
       })}
     </>
   );
-};
+});
 
 const SingleProduct = ({ fields }) => {
+  console.log('Product List is Running');
+
   const { name, price } = fields;
   return (
     <article className='product'>
